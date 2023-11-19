@@ -7,14 +7,17 @@
     "email": "silviolucas_santos@hotmail.com"
   },
   "scripts": {
-    "build": "rm -rf dist && tsc -p tsconfig-build.json"
+    "build": "rm -rf dist && tsc -p tsconfig-build.json",
+    "lint": "eslint . ",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "dependencies": {
+    "module-alias": "^2.2.3"
   },
   "devDependencies": {
     "@types/module-alias": "^2.0.4",
     "@types/node": "^20.9.2",
+    "eslint-config-standard-with-typescript": "^40.0.0",
     "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "module-alias": "^2.2.3"
   }
 }
