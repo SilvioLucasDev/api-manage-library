@@ -21,8 +21,7 @@ const config = {
   transform: {
     '\\.ts$': 'ts-jest'
   },
-  setupFiles: ['dotenv/config'],
-  setupFilesAfterEnv: ['<rootDir>/tests/infra/repositories/postgres/mocks/connection.ts']
+  setupFiles: ['dotenv/config']
 };
 
 module.exports = config;
