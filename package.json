@@ -10,6 +10,11 @@
     "build": "rm -rf dist && tsc -p tsconfig-build.json"
   },
   "devDependencies": {
+    "@types/module-alias": "^2.0.4",
+    "@types/node": "^20.9.2",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "module-alias": "^2.2.3"
   }
 }
