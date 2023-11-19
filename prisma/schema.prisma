@@ -6,3 +6,75 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Library {
+  id         String   @id @unique
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Book   Book[]
+  Author Author[]
+  User   User[]
+
+  @@map("libraries")
+}
+
+model Author {
+  id          String   @id @unique
+  name        String
+  birth_date  DateTime
+  nationality String
+  library_id  String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+
+  Library Library @relation(fields: [library_id], references: [id])
+
+  @@map("authors")
+}
+
+model Book {
+  id                 String   @id @unique
+  title              String
+  gender             String
+  author             String
+  year_publication   String
+  amount             Int
+  available_quantity Int
+  library_id         String
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+
+  Library  Library    @relation(fields: [library_id], references: [id])
+  BookUser BookUser[]
+
+  @@map("books")
+}
+
+model BookUser {
+  id          String   @id @unique
+  book_id     String
+  user_id     String
+  return_date DateTime
+  created_at  DateTime @default(now())
+
+  Book Book @relation(fields: [book_id], references: [id])
+  User User @relation(fields: [user_id], references: [id])
+
+  @@map("books_users")
+}
+
+model User {
+  id         String   @id @unique
+  name       String
+  email      String
+  library_id String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  Library  Library    @relation(fields: [library_id], references: [id])
+  BookUser BookUser[]
+
+  @@map("users")
+}
