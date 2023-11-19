@@ -1,0 +1,13 @@
+{
+  "name": "app-manage-library",
+  "version": "1.0.0",
+  "description": "Node API to manage library",
+    "author": {
+    "name": "Silvio Lucas - SLDS",
+    "email": "silviolucas_santos@hotmail.com"
+  },
+  "license": "ISC",
+    "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
