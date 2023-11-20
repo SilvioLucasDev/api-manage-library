@@ -2,6 +2,7 @@ import { badRequest, serverError, type HttpResponse, noContent } from '@/present
 import { type RemoveAuthorUseCase } from '@/application/use-cases'
 import { ValidationBuilder as Builder, ValidationComposite } from '@/presentation/validation'
 import { type Controller } from '@/presentation/controllers'
+import { AuthorNotFoundError } from '@/application/errors'
 
 export class RemoveAuthorController implements Controller {
   constructor(
@@ -15,6 +16,7 @@ export class RemoveAuthorController implements Controller {
       await this.removeAuthorUseCase.execute(httpRequest)
       return noContent()
     } catch (error) {
+      if (error instanceof AuthorNotFoundError) return badRequest(error)
       return serverError(error as Error)
     }
   }
