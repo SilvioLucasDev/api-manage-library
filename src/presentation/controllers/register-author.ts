@@ -15,7 +15,6 @@ export class RegisterAuthorController implements Controller {
       const authorId = await this.registerAuthorUseCase.execute(httpRequest)
       return created<object>(authorId)
     } catch (error) {
-      console.log(error)
       return serverError(error as Error)
     }
   }

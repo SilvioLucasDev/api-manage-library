@@ -25,7 +25,7 @@ export const created = <T = object>(data: T): HttpResponse<T> => ({
   data
 })
 
-export const noContent = (): HttpResponse => ({
+export const noContent = (): HttpResponse<null> => ({
   statusCode: 204,
   data: null
 })

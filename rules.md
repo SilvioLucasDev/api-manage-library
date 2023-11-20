@@ -6,19 +6,13 @@
 
 - Cadastrar
 
-  - Autor 201
+  - Autor 201 (OK)
   - Livro 201
   - Usuário 201
 
-- Editar
-
-  - Autor 204
-  - Livro 204
-  - Usuário 204
-
 - Deletar
 
-  - Autor 204
+  - Autor 204 (OK)
   - Livro 204
   - Usuário 204
 
