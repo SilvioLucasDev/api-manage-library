@@ -2,6 +2,7 @@ import { badRequest, serverError, type HttpResponse, created } from '@/presentat
 import { type RegisterAuthorUseCase } from '@/application/use-cases'
 import { ValidationBuilder as Builder, ValidationComposite } from '@/presentation/validation'
 import { type Controller } from '@/presentation/controllers'
+import { LibraryNotFoundError } from '@/application/errors'
 
 export class RegisterAuthorController implements Controller {
   constructor(
@@ -15,6 +16,8 @@ export class RegisterAuthorController implements Controller {
       const authorId = await this.registerAuthorUseCase.execute(httpRequest)
       return created<object>(authorId)
     } catch (error) {
+      console.log(error)
+      if (error instanceof LibraryNotFoundError) return badRequest(error)
       return serverError(error as Error)
     }
   }

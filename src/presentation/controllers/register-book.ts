@@ -2,6 +2,7 @@ import { badRequest, serverError, type HttpResponse, created } from '@/presentat
 import { type RegisterBookUseCase } from '@/application/use-cases'
 import { ValidationBuilder as Builder, ValidationComposite } from '@/presentation/validation'
 import { type Controller } from '@/presentation/controllers'
+import { AuthorNotFoundError, LibraryNotFoundError } from '@/application/errors'
 
 export class RegisterBookController implements Controller {
   constructor(
@@ -15,7 +16,7 @@ export class RegisterBookController implements Controller {
       const bookId = await this.registerBookUseCase.execute(httpRequest)
       return created<object>(bookId)
     } catch (error) {
-      console.log(error)
+      if (error instanceof LibraryNotFoundError || error instanceof AuthorNotFoundError) return badRequest(error)
       return serverError(error as Error)
     }
   }

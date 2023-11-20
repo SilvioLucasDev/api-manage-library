@@ -7,13 +7,13 @@
 - Cadastrar
 
   - Autor 201 (OK)
-  - Livro 201
+  - Livro 201 (OK)
   - Usuário 201
 
 - Deletar
 
   - Autor 204 (OK)
-  - Livro 204
+  - Livro 204 (OK)
   - Usuário 204
 
 - Emprestar Livo 200
