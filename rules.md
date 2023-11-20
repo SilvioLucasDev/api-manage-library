@@ -2,30 +2,30 @@
 
 ### BIBLIOTECA
 
-- Rota para cadastrar biblioteca
+- Rota para cadastrar biblioteca 201 (OK)
 
 - Cadastrar
 
-  - Autor
-  - Livro
-  - Usuário
+  - Autor 201
+  - Livro 201
+  - Usuário 201
 
 - Editar
 
-  - Autor
-  - Livro
-  - Usuário
+  - Autor 204
+  - Livro 204
+  - Usuário 204
 
 - Deletar
 
-  - Autor
-  - Livro
-  - Usuário
+  - Autor 204
+  - Livro 204
+  - Usuário 204
 
-- Emprestar Livo
-- Devoluzção de livro
+- Emprestar Livo 200
+- Devolução de livro 200
 
-- LISTAGEM DE LIVROS COM FILTRO (AUTOR, LIVROS EMPRESTADOS)
+- LISTAGEM DE LIVROS COM FILTRO (AUTOR, LIVROS EMPRESTADOS) 200
 
 ### RELATÓRIO??
 

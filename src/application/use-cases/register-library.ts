@@ -8,12 +8,17 @@ export class RegisterLibraryUseCase {
     private readonly crypto: UUIDGenerator
   ) { }
 
-  async execute({ name }: Input): Promise<void> {
+  async execute({ name }: Input): Promise<Output> {
     const library = Library.create({ name }, this.crypto)
     await this.libraryRepository.save(library)
+    return { libraryId: library.id }
   }
 }
 
 type Input = {
   name: string
+}
+
+type Output = {
+  libraryId: string
 }
