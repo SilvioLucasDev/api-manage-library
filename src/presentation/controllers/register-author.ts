@@ -1,6 +1,6 @@
 import { badRequest, serverError, type HttpResponse, created } from '@/presentation/helpers'
 import { type RegisterAuthorUseCase } from '@/application/use-cases'
-import { Date as DateFormat, Required, RequiredString, ValidationComposite } from '@/presentation/validation'
+import { ValidationBuilder as Builder, ValidationComposite } from '@/presentation/validation'
 import { type Controller } from '@/presentation/controllers'
 
 export class RegisterAuthorController implements Controller {
@@ -21,11 +21,11 @@ export class RegisterAuthorController implements Controller {
 
   private validate({ name, birthDate, nationality, libraryId }: HttpRequest): Error | undefined {
     return new ValidationComposite([
-      new RequiredString(name, 'name'),
-      new Required(birthDate, 'birthDate'),
-      new DateFormat(birthDate, 'birthDate'),
-      new RequiredString(nationality, 'nationality'),
-      new RequiredString(libraryId, 'libraryId')
+      ...Builder.of({ value: name, fieldName: 'name' }).required().requiredString().build(),
+      ...Builder.of({ value: birthDate, fieldName: 'birthDate' }).required().requiredString().build(),
+      ...Builder.of({ value: birthDate, fieldName: 'birthDate' }).required().date().build(),
+      ...Builder.of({ value: nationality, fieldName: 'nationality' }).required().requiredString().build(),
+      ...Builder.of({ value: libraryId, fieldName: 'libraryId' }).required().requiredString().build()
     ]).validate()
   }
 }

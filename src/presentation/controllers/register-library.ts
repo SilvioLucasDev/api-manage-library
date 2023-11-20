@@ -1,6 +1,6 @@
 import { badRequest, serverError, type HttpResponse, created } from '@/presentation/helpers'
 import { type RegisterLibraryUseCase } from '@/application/use-cases'
-import { RequiredString, ValidationComposite } from '@/presentation/validation'
+import { ValidationBuilder as Builder, ValidationComposite } from '@/presentation/validation'
 import { type Controller } from '@/presentation/controllers'
 
 export class RegisterLibraryController implements Controller {
@@ -21,7 +21,7 @@ export class RegisterLibraryController implements Controller {
 
   private validate({ name }: HttpRequest): Error | undefined {
     return new ValidationComposite([
-      new RequiredString(name, 'name')
+      ...Builder.of({ value: name, fieldName: 'name' }).required().requiredString().build()
     ]).validate()
   }
 }

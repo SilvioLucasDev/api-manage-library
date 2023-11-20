@@ -1,6 +1,6 @@
 import { badRequest, serverError, type HttpResponse, noContent } from '@/presentation/helpers'
 import { type RemoveAuthorUseCase } from '@/application/use-cases'
-import { RequiredString, ValidationComposite } from '@/presentation/validation'
+import { ValidationBuilder as Builder, ValidationComposite } from '@/presentation/validation'
 import { type Controller } from '@/presentation/controllers'
 
 export class RemoveAuthorController implements Controller {
@@ -21,7 +21,7 @@ export class RemoveAuthorController implements Controller {
 
   private validate({ authorId }: HttpRequest): Error | undefined {
     return new ValidationComposite([
-      new RequiredString(authorId, 'authorId')
+      ...Builder.of({ value: authorId, fieldName: 'authorId' }).required().requiredString().build()
     ]).validate()
   }
 }

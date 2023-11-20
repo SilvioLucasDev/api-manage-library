@@ -23,7 +23,7 @@ export class RequiredString extends Required {
   }
 
   validate(): Error | undefined {
-    if (super.validate() !== undefined || typeof this.value !== 'string') {
+    if (typeof this.value !== 'string') {
       return new FieldNotStringError(this.fieldName)
     }
   }
@@ -38,7 +38,7 @@ export class RequiredNumber extends Required {
   }
 
   validate(): Error | undefined {
-    if (super.validate() !== undefined || typeof this.value !== 'number') {
+    if (typeof this.value !== 'number') {
       return new FieldNotNumberError(this.fieldName)
     }
   }
