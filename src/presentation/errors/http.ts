@@ -16,13 +16,20 @@ export class RequiredFieldError extends Error {
 export class FieldNotStringError extends Error {
   constructor(fieldName: string) {
     super(`The ${fieldName} field must be a string`)
-    this.name = 'RequiredFieldError'
+    this.name = 'FieldNotStringError'
   }
 }
 
 export class FieldNotNumberError extends Error {
   constructor(fieldName: string) {
     super(`The ${fieldName} field must be a number`)
-    this.name = 'RequiredFieldError'
+    this.name = 'FieldNotNumberError'
+  }
+}
+
+export class InvalidDateFormatError extends Error {
+  constructor(fieldName: string) {
+    super(`The ${fieldName} field is an invalid date`)
+    this.name = 'InvalidDateFormatError'
   }
 }
