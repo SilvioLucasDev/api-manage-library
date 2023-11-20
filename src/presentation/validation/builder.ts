@@ -1,4 +1,4 @@
-import { Date, Required, RequiredNumber, RequiredString, type Validator } from '@/presentation/validation'
+import { Date, OnlyLetters, OnlyNumber, Required, RequiredNumber, RequiredString, type Validator } from '@/presentation/validation'
 
 export class ValidationBuilder {
   private constructor(
@@ -23,6 +23,16 @@ export class ValidationBuilder {
 
   requiredNumber(): ValidationBuilder {
     this.validators.push(new RequiredNumber(this.value, this.fieldName))
+    return this
+  }
+
+  onlyNumber(): ValidationBuilder {
+    this.validators.push(new OnlyNumber(this.value, this.fieldName))
+    return this
+  }
+
+  onlyLetters(): ValidationBuilder {
+    this.validators.push(new OnlyLetters(this.value, this.fieldName))
     return this
   }
 

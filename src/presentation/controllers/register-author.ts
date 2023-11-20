@@ -22,7 +22,6 @@ export class RegisterAuthorController implements Controller {
   private validate({ name, birthDate, nationality, libraryId }: HttpRequest): Error | undefined {
     return new ValidationComposite([
       ...Builder.of({ value: name, fieldName: 'name' }).required().requiredString().build(),
-      ...Builder.of({ value: birthDate, fieldName: 'birthDate' }).required().requiredString().build(),
       ...Builder.of({ value: birthDate, fieldName: 'birthDate' }).required().date().build(),
       ...Builder.of({ value: nationality, fieldName: 'nationality' }).required().requiredString().build(),
       ...Builder.of({ value: libraryId, fieldName: 'libraryId' }).required().requiredString().build()

@@ -1,5 +1,5 @@
 import { type GetAuthor, type DeleteAuthor } from '@/application/contracts/repositories'
-import { AuthorNotFoundError } from '../errors'
+import { AuthorNotFoundError } from '@/application/errors'
 
 export class RemoveAuthorUseCase {
   constructor(

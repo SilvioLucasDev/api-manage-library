@@ -26,10 +26,10 @@ CREATE TABLE "books" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
     "gender" TEXT NOT NULL,
-    "author" TEXT NOT NULL,
     "year_publication" TEXT NOT NULL,
     "amount" INTEGER NOT NULL,
-    "available_quantity" INTEGER NOT NULL,
+    "available_quantity" INTEGER,
+    "author_id" TEXT NOT NULL,
     "library_id" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
@@ -43,6 +43,7 @@ CREATE TABLE "books_users" (
     "book_id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
     "return_date" TIMESTAMP(3) NOT NULL,
+    "returned" BOOLEAN NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
     CONSTRAINT "books_users_pkey" PRIMARY KEY ("id")
@@ -77,6 +78,9 @@ CREATE UNIQUE INDEX "users_id_key" ON "users"("id");
 
 -- AddForeignKey
 ALTER TABLE "authors" ADD CONSTRAINT "authors_library_id_fkey" FOREIGN KEY ("library_id") REFERENCES "libraries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "books" ADD CONSTRAINT "books_author_id_fkey" FOREIGN KEY ("author_id") REFERENCES "authors"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "books" ADD CONSTRAINT "books_library_id_fkey" FOREIGN KEY ("library_id") REFERENCES "libraries"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

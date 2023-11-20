@@ -30,6 +30,7 @@ model Author {
   updated_at  DateTime @updatedAt
 
   Library Library @relation(fields: [library_id], references: [id])
+  Book    Book[]
 
   @@map("authors")
 }
@@ -38,14 +39,15 @@ model Book {
   id                 String   @id @unique
   title              String
   gender             String
-  author             String
   year_publication   String
   amount             Int
-  available_quantity Int
+  available_quantity Int?
+  author_id          String
   library_id         String
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt
 
+  Author   Author     @relation(fields: [author_id], references: [id])
   Library  Library    @relation(fields: [library_id], references: [id])
   BookUser BookUser[]
 
@@ -57,6 +59,7 @@ model BookUser {
   book_id     String
   user_id     String
   return_date DateTime
+  returned    Boolean
   created_at  DateTime @default(now())
 
   Book Book @relation(fields: [book_id], references: [id])
