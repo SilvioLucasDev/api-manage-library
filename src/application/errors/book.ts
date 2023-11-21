@@ -4,3 +4,10 @@ export class BookNotFoundError extends Error {
     this.name = 'BookNotFoundError'
   }
 }
+
+export class BookIsNotAvailableError extends Error {
+  constructor() {
+    super('Book is not available')
+    this.name = 'BookIsNotAvailableError'
+  }
+}

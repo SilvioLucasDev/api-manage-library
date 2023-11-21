@@ -1,7 +1,7 @@
 import { type User } from '@/domain/entities'
 
 export interface SaveUser {
-  save: (author: SaveUser.Input) => Promise<void>
+  save: (user: SaveUser.Input) => Promise<void>
 }
 
 export namespace SaveUser {
@@ -26,7 +26,7 @@ export namespace GetUser {
 }
 
 export interface DeleteUser {
-  delete: (author: DeleteUser.Input) => Promise<void>
+  delete: (user: DeleteUser.Input) => Promise<void>
 }
 
 export namespace DeleteUser {

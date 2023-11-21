@@ -13,8 +13,8 @@ export class RegisterUserController implements Controller {
     try {
       const error = this.validate(httpRequest)
       if (error !== undefined) return badRequest(error)
-      const authorId = await this.registerUserUseCase.execute(httpRequest)
-      return created<object>(authorId)
+      const userId = await this.registerUserUseCase.execute(httpRequest)
+      return created<object>(userId)
     } catch (error) {
       if (error instanceof LibraryNotFoundError) return badRequest(error)
       return serverError(error as Error)

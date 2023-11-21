@@ -41,7 +41,7 @@ model Book {
   gender             String
   year_publication   String
   amount             Int
-  available_quantity Int?
+  available_quantity Int
   author_id          String
   library_id         String
   created_at         DateTime @default(now())
@@ -59,8 +59,9 @@ model BookUser {
   book_id     String
   user_id     String
   return_date DateTime
-  returned    Boolean
+  returned    Boolean  @default(false)
   created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 
   Book Book @relation(fields: [book_id], references: [id])
   User User @relation(fields: [user_id], references: [id])

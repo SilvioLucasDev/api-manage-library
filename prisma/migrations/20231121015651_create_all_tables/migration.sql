@@ -28,7 +28,7 @@ CREATE TABLE "books" (
     "gender" TEXT NOT NULL,
     "year_publication" TEXT NOT NULL,
     "amount" INTEGER NOT NULL,
-    "available_quantity" INTEGER,
+    "available_quantity" INTEGER NOT NULL,
     "author_id" TEXT NOT NULL,
     "library_id" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -43,8 +43,9 @@ CREATE TABLE "books_users" (
     "book_id" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
     "return_date" TIMESTAMP(3) NOT NULL,
-    "returned" BOOLEAN NOT NULL,
+    "returned" BOOLEAN NOT NULL DEFAULT false,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "books_users_pkey" PRIMARY KEY ("id")
 );

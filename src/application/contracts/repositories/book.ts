@@ -25,7 +25,7 @@ export namespace GetBook {
     amount: number
     authorId: string
     libraryId: string
-    availableQuantity?: number
+    availableQuantity: number
   } | undefined
 }
 

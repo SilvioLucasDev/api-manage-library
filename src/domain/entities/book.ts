@@ -7,14 +7,15 @@ export class Book {
     readonly gender: string,
     readonly yearPublication: string,
     readonly amount: number,
+    readonly availableQuantity: number,
     readonly authorId: string,
-    readonly libraryId: string,
-    readonly availableQuantity?: string
+    readonly libraryId: string
   ) { }
 
   static create({ title, gender, yearPublication, amount, authorId, libraryId }: Input, crypto: UUIDGenerator): Book {
     const id = crypto.uuid()
-    return new Book(id, title, gender, yearPublication, amount, authorId, libraryId)
+    const availableQuantity = amount
+    return new Book(id, title, gender, yearPublication, amount, availableQuantity, authorId, libraryId)
   }
 }
 
