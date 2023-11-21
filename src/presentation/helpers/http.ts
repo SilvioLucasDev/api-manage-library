@@ -1,6 +1,6 @@
 import { ServerError } from '@/presentation/errors'
 
-export type HttpResponse<T = object | Error | null> = {
+export type HttpResponse<T = object | Array<object> | Error | null | undefined> = {
   statusCode: number
   data: T
 }
@@ -15,7 +15,7 @@ export const serverError = (error: Error): HttpResponse<Error> => ({
   data: new ServerError(error)
 })
 
-export const ok = <T = object>(data: T): HttpResponse<T> => ({
+export const ok = <T = object | Array<object> | undefined>(data: T): HttpResponse<T> => ({
   statusCode: 200,
   data
 })

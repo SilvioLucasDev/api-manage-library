@@ -8,10 +8,11 @@ export class OnlyNumber implements Validator {
   ) { }
 
   validate(): Error | undefined {
-    const regex = /^\d+$/
-
-    if (!regex.test(this.value)) {
-      return new FieldNotNumberError(this.fieldName)
+    if (this.value) {
+      const regex = /^\d+$/
+      if (!regex.test(this.value)) {
+        return new FieldNotNumberError(this.fieldName)
+      }
     }
   }
 }
@@ -23,10 +24,11 @@ export class OnlyLetters implements Validator {
   ) { }
 
   validate(): Error | undefined {
-    const regex = /^[a-zA-Z]+$/
-
-    if (!regex.test(this.value)) {
-      return new FieldNotStringError(this.fieldName)
+    if (this.value) {
+      const regex = /^[a-zA-Z]+$/
+      if (!regex.test(this.value)) {
+        return new FieldNotStringError(this.fieldName)
+      }
     }
   }
 }

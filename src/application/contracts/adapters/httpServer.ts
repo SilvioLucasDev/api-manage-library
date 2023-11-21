@@ -6,7 +6,7 @@ export namespace OnServer {
   export type Input = {
     method: string
     url: string
-    callback: (params: object, body: string) => Promise<{ statusCode: number, data: any }>
+    callback: (params?: object, body?: object, query?: object) => Promise<{ statusCode: number, data: any }>
   }
 }
 

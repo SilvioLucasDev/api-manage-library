@@ -1,4 +1,4 @@
-import { FieldNotNumberError, FieldNotStringError, RequiredFieldError } from '@/presentation/errors'
+import { FieldNotBooleanError, FieldNotNumberError, FieldNotStringError, RequiredFieldError } from '@/presentation/errors'
 import { type Validator } from '@/presentation/validation'
 
 export class Required implements Validator {
@@ -23,8 +23,10 @@ export class RequiredString extends Required {
   }
 
   validate(): Error | undefined {
-    if (typeof this.value !== 'string') {
-      return new FieldNotStringError(this.fieldName)
+    if (this.value) {
+      if (typeof this.value !== 'string') {
+        return new FieldNotStringError(this.fieldName)
+      }
     }
   }
 }
@@ -38,8 +40,25 @@ export class RequiredNumber extends Required {
   }
 
   validate(): Error | undefined {
-    if (typeof this.value !== 'number') {
-      return new FieldNotNumberError(this.fieldName)
+    if (this.value) {
+      if (typeof this.value !== 'number') {
+        return new FieldNotNumberError(this.fieldName)
+      }
+    }
+  }
+}
+
+export class RequiredBoolean implements Validator {
+  constructor(
+    readonly value: any,
+    readonly fieldName: string
+  ) { }
+
+  validate(): Error | undefined {
+    if (this.value) {
+      if (typeof this.value !== 'boolean') {
+        return new FieldNotBooleanError(this.fieldName)
+      }
     }
   }
 }

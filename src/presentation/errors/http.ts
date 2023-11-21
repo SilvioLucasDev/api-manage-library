@@ -27,6 +27,13 @@ export class FieldNotNumberError extends Error {
   }
 }
 
+export class FieldNotBooleanError extends Error {
+  constructor(fieldName: string) {
+    super(`The ${fieldName} field must be a boolean`)
+    this.name = 'FieldNotBooleanError'
+  }
+}
+
 export class InvalidDateFormatError extends Error {
   constructor(fieldName: string) {
     super(`The ${fieldName} field is an invalid date`)

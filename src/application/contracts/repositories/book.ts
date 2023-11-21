@@ -38,3 +38,27 @@ export namespace DeleteBook {
     id: string
   }
 }
+
+export interface GetByFilterBook {
+  getByFilter: (input: GetByFilterBook.Input) => Promise<GetByFilterBook.Output>
+}
+
+export namespace GetByFilterBook {
+  export type Input = {
+    search?: string
+    borrowedBooks?: string
+    booksAvailable?: string
+    libraryId: string
+  }
+
+  export type Output = Array<{
+    id: string
+    title: string
+    gender: string
+    yearPublication: string
+    amount: number
+    availableQuantity: number
+    author: string
+    library: string
+  }> | undefined
+}

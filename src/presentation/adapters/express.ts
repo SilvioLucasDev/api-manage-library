@@ -19,7 +19,7 @@ export class ExpressAdapter implements OnServer, ListenServer {
 
   on({ method, url, callback }: OnServer.Input): void {
     this.app[method](`/v1/api${url.replace(/\{|\}/g, '')}`, async function (req: Request, res: Response) {
-      const { statusCode, data } = await callback(req.params, req.body)
+      const { statusCode, data } = await callback(req.params, req.body, req.query)
       const json = [200, 201, 204].includes(statusCode) ? data : { error: data.message }
 
       res.status(statusCode).json(json)
