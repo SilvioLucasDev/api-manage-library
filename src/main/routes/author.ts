@@ -1,5 +1,5 @@
 import { type OnServer } from '@/application/contracts/adapters'
-import { makeRegisterAuthorController, makeRemoveAuthorController } from '@/main/factories/presentation/controllers'
+import { makeRegisterAuthorController, makeRemoveAuthorController } from '@/main/factories/presentation/controllers/author'
 
 export class AuthorRouter {
   constructor(httpServer: OnServer) {

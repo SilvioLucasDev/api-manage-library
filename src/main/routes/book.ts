@@ -1,5 +1,5 @@
 import { type OnServer } from '@/application/contracts/adapters'
-import { makeRegisterBookController, makeRemoveBookController } from '@/main/factories/presentation/controllers'
+import { makeRegisterBookController, makeRemoveBookController } from '@/main/factories/presentation/controllers/book'
 
 export class BookRouter {
   constructor(httpServer: OnServer) {

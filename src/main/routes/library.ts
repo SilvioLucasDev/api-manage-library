@@ -1,5 +1,5 @@
 import { type OnServer } from '@/application/contracts/adapters'
-import { makeRegisterLibraryController } from '@/main/factories/presentation/controllers'
+import { makeRegisterLibraryController } from '@/main/factories/presentation/controllers/library'
 
 export class LibraryRouter {
   constructor(httpServer: OnServer) {

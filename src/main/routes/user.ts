@@ -1,5 +1,5 @@
 import { type OnServer } from '@/application/contracts/adapters'
-import { makeRegisterUserController, makeRemoveUserController } from '@/main/factories/presentation/controllers'
+import { makeRegisterUserController, makeRemoveUserController } from '@/main/factories/presentation/controllers/user'
 
 export class UserRouter {
   constructor(httpServer: OnServer) {
