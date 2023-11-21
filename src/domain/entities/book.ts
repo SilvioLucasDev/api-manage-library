@@ -12,14 +12,14 @@ export class Book {
     readonly libraryId: string
   ) { }
 
-  static create({ title, gender, yearPublication, amount, authorId, libraryId }: Input, crypto: UUIDGenerator): Book {
+  static create({ title, gender, yearPublication, amount, authorId, libraryId }: CreateInput, crypto: UUIDGenerator): Book {
     const id = crypto.uuid()
     const availableQuantity = amount
     return new Book(id, title, gender, yearPublication, amount, availableQuantity, authorId, libraryId)
   }
 }
 
-type Input = {
+type CreateInput = {
   title: string
   gender: string
   yearPublication: string

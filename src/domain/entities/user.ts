@@ -8,13 +8,13 @@ export class User {
     readonly libraryId: string
   ) { }
 
-  static create({ name, email, libraryId }: Input, crypto: UUIDGenerator): User {
+  static create({ name, email, libraryId }: CreateInput, crypto: UUIDGenerator): User {
     const id = crypto.uuid()
     return new User(id, name, email, libraryId)
   }
 }
 
-type Input = {
+type CreateInput = {
   name: string
   email: string
   libraryId: string

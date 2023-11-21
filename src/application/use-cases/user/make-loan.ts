@@ -12,11 +12,11 @@ export class MakeLoanUseCase {
   ) { }
 
   async execute({ bookId, userId }: Input): Promise<Output> {
-    const book = await this.bookRepository.get({ id: bookId })
-    if (book === undefined) throw new BookNotFoundError()
-    if (book.availableQuantity <= 0) throw new BookIsNotAvailableError()
-    const author = await this.userRepository.get({ id: userId })
-    if (author === undefined) throw new UserNotFoundError()
+    const bookExists = await this.bookRepository.get({ id: bookId })
+    if (!bookExists) throw new BookNotFoundError()
+    if (bookExists.availableQuantity <= 0) throw new BookIsNotAvailableError()
+    const authorExists = await this.userRepository.get({ id: userId })
+    if (!authorExists) throw new UserNotFoundError()
     const bookUser = BookUser.create({ bookId, userId }, this.crypto)
     await this.bookUserRepository.save(bookUser)
     return { loanId: bookUser.id }

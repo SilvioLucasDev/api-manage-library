@@ -6,12 +6,12 @@ export class Library {
     readonly name: string
   ) { }
 
-  static create({ name }: Input, crypto: UUIDGenerator): Library {
+  static create({ name }: CreateInput, crypto: UUIDGenerator): Library {
     const id = crypto.uuid()
     return new Library(id, name)
   }
 }
 
-type Input = {
+type CreateInput = {
   name: string
 }

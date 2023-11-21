@@ -7,8 +7,8 @@ export class RemoveUserUseCase {
   ) { }
 
   async execute({ userId }: Input): Promise<void> {
-    const user = await this.userRepository.get({ id: userId })
-    if (user === undefined) throw new UserNotFoundError()
+    const userExists = await this.userRepository.get({ id: userId })
+    if (!userExists) throw new UserNotFoundError()
     await this.userRepository.delete({ id: userId })
   }
 }

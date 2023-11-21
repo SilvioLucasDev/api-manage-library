@@ -5,7 +5,7 @@ const config = {
     '<rootDir>/src/**/*.ts',
     '!<rootDir>/src/main/**',
     '!<rootDir>/src/**/index.ts',
-    '!<rootDir>/src/infra/repositories/postgres/helpers/connection.ts'
+    '!<rootDir>/src/infra/repositories/prisma/helpers/connection.ts'
   ],
   coverageDirectory: "coverage",
   coverageProvider: 'babel',

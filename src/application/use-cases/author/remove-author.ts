@@ -7,8 +7,8 @@ export class RemoveAuthorUseCase {
   ) { }
 
   async execute({ authorId }: Input): Promise<void> {
-    const author = await this.authorRepository.get({ id: authorId })
-    if (author === undefined) throw new AuthorNotFoundError()
+    const authorExists = await this.authorRepository.get({ id: authorId })
+    if (!authorExists) throw new AuthorNotFoundError()
     await this.authorRepository.delete({ id: authorId })
   }
 }

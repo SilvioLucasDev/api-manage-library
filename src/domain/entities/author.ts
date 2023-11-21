@@ -9,13 +9,13 @@ export class Author {
     readonly libraryId: string
   ) { }
 
-  static create({ name, birthDate, nationality, libraryId }: Input, crypto: UUIDGenerator): Author {
+  static create({ name, birthDate, nationality, libraryId }: CreateInput, crypto: UUIDGenerator): Author {
     const id = crypto.uuid()
     return new Author(id, name, birthDate, nationality, libraryId)
   }
 }
 
-type Input = {
+type CreateInput = {
   name: string
   birthDate: Date
   nationality: string

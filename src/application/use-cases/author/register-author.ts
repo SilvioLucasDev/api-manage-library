@@ -11,8 +11,8 @@ export class RegisterAuthorUseCase {
   ) { }
 
   async execute({ name, birthDate, nationality, libraryId }: Input): Promise<Output> {
-    const library = await this.libraryRepository.get({ id: libraryId })
-    if (library === undefined) throw new LibraryNotFoundError()
+    const libraryExists = await this.libraryRepository.get({ id: libraryId })
+    if (!libraryExists) throw new LibraryNotFoundError()
     const author = Author.create({ name, birthDate, nationality, libraryId }, this.crypto)
     await this.authorRepository.save(author)
     return { authorId: author.id }

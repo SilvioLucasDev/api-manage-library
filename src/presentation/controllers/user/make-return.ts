@@ -16,7 +16,6 @@ export class MakeReturnController implements Controller {
       await this.makeLoanUseCase.execute(httpRequest)
       return noContent()
     } catch (error) {
-      console.log(error)
       if (error instanceof BookUserNotFoundError || error instanceof BookAlreadyReturned) return badRequest(error)
       return serverError(error as Error)
     }

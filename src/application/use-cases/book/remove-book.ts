@@ -7,8 +7,8 @@ export class RemoveBookUseCase {
   ) { }
 
   async execute({ bookId }: Input): Promise<void> {
-    const book = await this.bookRepository.get({ id: bookId })
-    if (book === undefined) throw new BookNotFoundError()
+    const bookExists = await this.bookRepository.get({ id: bookId })
+    if (!bookExists) throw new BookNotFoundError()
     await this.bookRepository.delete({ id: bookId })
   }
 }
