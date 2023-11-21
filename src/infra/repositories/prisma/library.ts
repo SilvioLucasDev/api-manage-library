@@ -1,5 +1,5 @@
 import { type GetLibrary, type SaveLibrary } from '@/application/contracts/repositories'
-import prisma from '@/infra/repositories/postgres/helpers/connection'
+import prisma from '@/infra/repositories/prisma/helpers/connection'
 
 export class PgLibraryRepository implements SaveLibrary, GetLibrary {
   async save({ id, name }: SaveLibrary.Input): Promise<void> {

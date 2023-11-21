@@ -1,4 +1,4 @@
-import { PgBookRepository } from '@/infra/repositories/postgres'
+import { PgBookRepository } from '@/infra/repositories/prisma'
 
 export const makePgBookRepository = (): PgBookRepository => {
   return new PgBookRepository()

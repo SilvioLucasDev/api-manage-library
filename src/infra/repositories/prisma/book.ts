@@ -1,5 +1,5 @@
 import { type GetBook, type DeleteBook, type SaveBook } from '@/application/contracts/repositories'
-import prisma from '@/infra/repositories/postgres/helpers/connection'
+import prisma from '@/infra/repositories/prisma/helpers/connection'
 
 export class PgBookRepository implements SaveBook, GetBook, DeleteBook {
   async save({ id, title, gender, yearPublication, amount, authorId, libraryId }: SaveBook.Input): Promise<void> {

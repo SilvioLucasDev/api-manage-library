@@ -1,5 +1,5 @@
 import { type GetAuthor, type DeleteAuthor, type SaveAuthor } from '@/application/contracts/repositories'
-import prisma from '@/infra/repositories/postgres/helpers/connection'
+import prisma from '@/infra/repositories/prisma/helpers/connection'
 
 export class PgAuthorRepository implements SaveAuthor, GetAuthor, DeleteAuthor {
   async save({ id, name, birthDate, nationality, libraryId }: SaveAuthor.Input): Promise<void> {
