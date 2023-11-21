@@ -28,7 +28,7 @@ export class UserRouter {
     })
 
     httpServer.on({
-      method: 'post',
+      method: 'patch',
       url: '/users/return/:loanId',
       callback: async (params: any) => {
         return await makeMakeReturnController().handle(params)
