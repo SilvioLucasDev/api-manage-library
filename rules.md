@@ -8,13 +8,13 @@
 
   - Autor 201 (OK)
   - Livro 201 (OK)
-  - Usuário 201
+  - Usuário 201 (OK)
 
 - Deletar
 
   - Autor 204 (OK)
   - Livro 204 (OK)
-  - Usuário 204
+  - Usuário 204 (OK)
 
 - Emprestar Livo 200
 - Devolução de livro 200
