@@ -37,9 +37,14 @@ export class PgBookUserRepository implements SaveBookUser, GetBookUser, UpdateRe
     }
   }
 
-  async updateReturned({ id, returned }: UpdateReturnedBookUser.Input): Promise<void> {
+  async updateReturned({ id, bookId, returned }: UpdateReturnedBookUser.Input): Promise<void> {
     await prisma.bookUser.update({
       where: { id }, data: { returned }
+    })
+
+    await prisma.book.update({
+      where: { id: bookId },
+      data: { available_quantity: { increment: 1 } }
     })
   }
 }

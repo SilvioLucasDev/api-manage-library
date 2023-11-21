@@ -17,7 +17,7 @@
   - Usuário 204 (OK)
 
 - Emprestar Livo 201 (OK)
-- Devolução de livro 200
+- Devolução de livro 204 (OK)
 
 - LISTAGEM DE LIVROS COM FILTRO (AUTOR, LIVROS EMPRESTADOS) 200
 

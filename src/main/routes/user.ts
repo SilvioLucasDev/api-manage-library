@@ -1,5 +1,5 @@
 import { type OnServer } from '@/application/contracts/adapters'
-import { makeMakeLoanController, makeRegisterUserController, makeRemoveUserController } from '@/main/factories/presentation/controllers/user'
+import { makeMakeLoanController, makeMakeReturnController, makeRegisterUserController, makeRemoveUserController } from '@/main/factories/presentation/controllers/user'
 
 export class UserRouter {
   constructor(httpServer: OnServer) {
@@ -24,6 +24,14 @@ export class UserRouter {
       url: '/users/loan',
       callback: async (params: any, body: any) => {
         return await makeMakeLoanController().handle(body)
+      }
+    })
+
+    httpServer.on({
+      method: 'post',
+      url: '/users/return/:loanId',
+      callback: async (params: any) => {
+        return await makeMakeReturnController().handle(params)
       }
     })
   }

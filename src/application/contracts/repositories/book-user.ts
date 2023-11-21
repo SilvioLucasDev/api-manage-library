@@ -33,6 +33,7 @@ export interface UpdateReturnedBookUser {
 export namespace UpdateReturnedBookUser {
   export type Input = {
     id: string
+    bookId: string
     returned: boolean
   }
 }

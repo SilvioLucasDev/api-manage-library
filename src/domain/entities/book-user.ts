@@ -9,15 +9,34 @@ export class BookUser {
     readonly returned?: boolean
   ) { }
 
-  static create({ bookId, userId }: Input, crypto: UUIDGenerator): BookUser {
+  static create({ bookId, userId }: CreateInput, crypto: UUIDGenerator): BookUser {
     const id = crypto.uuid()
     const returnDate = new Date()
     returnDate.setDate(returnDate.getDate() + 10)
     return new BookUser(id, bookId, userId, returnDate)
   }
+
+  static updateReturn({ id, bookId }: UpdateReturnInput): UpdateReturnOutput {
+    return {
+      id,
+      bookId,
+      returned: true
+    }
+  }
 }
 
-type Input = {
+type CreateInput = {
   bookId: string
   userId: string
+}
+
+type UpdateReturnInput = {
+  id: string
+  bookId: string
+}
+
+type UpdateReturnOutput = {
+  id: string
+  bookId: string
+  returned: boolean
 }
